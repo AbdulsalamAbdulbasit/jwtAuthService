@@ -59,7 +59,9 @@ namespace jwtAuthService.Infrastructure.Services
                 UserName = user.UserName,
                 Email = user.Email,
                 AccessToken = string.Empty,
-                RefreshToken = string.Empty
+                RefreshToken = string.Empty,
+                AccessTokenExpires = DateTime.MinValue,
+                RefreshTokenExpires = DateTime.MinValue
             };
         }
 
