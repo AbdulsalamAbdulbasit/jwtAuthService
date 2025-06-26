@@ -4,11 +4,13 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using jwtAuthService.Application.DTOs;
+using jwtAuthService.Application.Services;
 using jwtAuthService.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Logging;
 
 namespace jwtAuthService.Infrastructure.Services
 {
@@ -19,74 +21,93 @@ namespace jwtAuthService.Infrastructure.Services
         private readonly RoleManager<IdentityRole<Guid>> _roleManager;
         private readonly ApplicationDbContext _dbContext;
         private readonly IConfiguration _configuration;
+        private readonly ILogger<AuthService> _logger;
 
         public AuthService(
             UserManager<IdentityUser<Guid>> userManager,
             SignInManager<IdentityUser<Guid>> signInManager,
             RoleManager<IdentityRole<Guid>> roleManager,
             ApplicationDbContext dbContext,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            ILogger<AuthService> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _dbContext = dbContext;
             _configuration = configuration;
+            _logger = logger;
         }
 
         public async Task<AuthResponse> RegisterAsync(RegisterRequest request, string origin)
         {
-            var user = new IdentityUser<Guid>
+            try
             {
-                UserName = request.UserName,
-                Email = request.Email,
-                EmailConfirmed = false
-            };
-            var result = await _userManager.CreateAsync(user, request.Password);
-            if (!result.Succeeded)
-            {
-                throw new Exception(string.Join("; ", result.Errors.Select(e => e.Description)));
+                var user = new IdentityUser<Guid>
+                {
+                    UserName = request.UserName,
+                    Email = request.Email,
+                    EmailConfirmed = false
+                };
+                var result = await _userManager.CreateAsync(user, request.Password);
+                if (!result.Succeeded)
+                {
+                    throw new Exception(string.Join("; ", result.Errors.Select(e => e.Description)));
+                }
+                // Assign default role
+                if (!await _roleManager.RoleExistsAsync("User"))
+                    await _roleManager.CreateAsync(new IdentityRole<Guid> { Name = "User" });
+                await _userManager.AddToRoleAsync(user, "User");
+                // Generate email confirmation token
+                var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                // TODO: Send confirmation email with token (implement email sender)
+                return new AuthResponse
+                {
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    AccessToken = string.Empty,
+                    RefreshToken = string.Empty,
+                    AccessTokenExpires = DateTime.MinValue,
+                    RefreshTokenExpires = DateTime.MinValue
+                };
             }
-            // Assign default role
-            if (!await _roleManager.RoleExistsAsync("User"))
-                await _roleManager.CreateAsync(new IdentityRole<Guid> { Name = "User" });
-            await _userManager.AddToRoleAsync(user, "User");
-            // Generate email confirmation token
-            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            // TODO: Send confirmation email with token (implement email sender)
-            return new AuthResponse
+            catch (Exception ex)
             {
-                UserName = user.UserName,
-                Email = user.Email,
-                AccessToken = string.Empty,
-                RefreshToken = string.Empty,
-                AccessTokenExpires = DateTime.MinValue,
-                RefreshTokenExpires = DateTime.MinValue
-            };
+                _logger.LogError(ex, "Registration failed for {Email}", request.Email);
+                throw;
+            }
         }
 
         public async Task<AuthResponse> LoginAsync(LoginRequest request)
         {
-            var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
-            if (user == null)
-                throw new Exception("Invalid credentials");
-            if (!user.EmailConfirmed)
-                throw new Exception("Email not confirmed");
-            var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
-            if (!result.Succeeded)
-                throw new Exception("Invalid credentials");
-            // Generate JWT and refresh token
-            var accessToken = GenerateJwtToken(user);
-            var refreshToken = Guid.NewGuid().ToString(); // TODO: Store securely and associate with user/device
-            return new AuthResponse
+            try
             {
-                UserName = user.UserName,
-                Email = user.Email,
-                AccessToken = accessToken,
-                RefreshToken = refreshToken,
-                AccessTokenExpires = DateTime.UtcNow.AddMinutes(5),
-                RefreshTokenExpires = DateTime.UtcNow.AddDays(7)
-            };
+                var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+                if (user == null)
+                    throw new Exception("Invalid credentials");
+                if (!user.EmailConfirmed)
+                    throw new Exception("Email not confirmed");
+                var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
+                if (!result.Succeeded)
+                    throw new Exception("Invalid credentials");
+                // Generate JWT and refresh token
+                var accessToken = GenerateJwtToken(user);
+                var refreshToken = Guid.NewGuid().ToString(); // TODO: Store securely and associate with user/device
+                return new AuthResponse
+                {
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    AccessToken = accessToken,
+                    RefreshToken = refreshToken,
+                    AccessTokenExpires = DateTime.UtcNow.AddMinutes(5),
+                    RefreshTokenExpires = DateTime.UtcNow.AddDays(7)
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Login failed for {Email}", request.Email);
+                throw;
+            }
         }
 
         private string GenerateJwtToken(IdentityUser<Guid> user)
@@ -108,7 +129,61 @@ namespace jwtAuthService.Infrastructure.Services
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        // ...other methods (RefreshTokenAsync, LogoutAsync, ConfirmEmailAsync) remain as stubs for now...
+        public async Task<AuthResponse> RefreshTokenAsync(RefreshTokenRequest request)
+        {
+            var refreshToken = await _dbContext.RefreshTokens.Include(rt => rt.User)
+                .FirstOrDefaultAsync(rt => rt.Token == request.RefreshToken && rt.DeviceFingerprint == request.DeviceFingerprint);
+            if (refreshToken == null || !refreshToken.IsActive)
+                throw new Exception("Invalid or expired refresh token");
+            // Revoke old token
+            refreshToken.Revoked = DateTime.UtcNow;
+            refreshToken.RevokedByIp = "TODO: Get IP from context";
+            // Generate new tokens
+            var user = await _userManager.FindByIdAsync(refreshToken.UserId.ToString());
+            var newAccessToken = GenerateJwtToken(user);
+            var newRefreshToken = Guid.NewGuid().ToString();
+            var newTokenEntity = new Domain.Entities.RefreshToken
+            {
+                Token = newRefreshToken,
+                Expires = DateTime.UtcNow.AddDays(7),
+                Created = DateTime.UtcNow,
+                CreatedByIp = "TODO: Get IP from context",
+                UserId = user.Id,
+                DeviceFingerprint = request.DeviceFingerprint
+            };
+            _dbContext.RefreshTokens.Add(newTokenEntity);
+            await _dbContext.SaveChangesAsync();
+            return new AuthResponse
+            {
+                UserName = user.UserName ?? string.Empty,
+                Email = user.Email ?? string.Empty,
+                AccessToken = newAccessToken,
+                RefreshToken = newRefreshToken,
+                AccessTokenExpires = DateTime.UtcNow.AddMinutes(5),
+                RefreshTokenExpires = newTokenEntity.Expires
+            };
+        }
+
+        public async Task LogoutAsync(string refreshToken, string deviceFingerprint)
+        {
+            var token = await _dbContext.RefreshTokens.FirstOrDefaultAsync(rt => rt.Token == refreshToken && rt.DeviceFingerprint == deviceFingerprint);
+            if (token != null && token.IsActive)
+            {
+                token.Revoked = DateTime.UtcNow;
+                token.RevokedByIp = "TODO: Get IP from context";
+                await _dbContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task ConfirmEmailAsync(string userId, string token)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                throw new Exception("User not found");
+            var result = await _userManager.ConfirmEmailAsync(user, token);
+            if (!result.Succeeded)
+                throw new Exception("Email confirmation failed");
+        }
     }
 }
 

@@ -96,3 +96,4 @@ C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthSe
 C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Test\obj\Debug\net9.0\jwtAuthService.Test.pdb
 C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Test\obj\Debug\net9.0\jwtAuthService.Test.genruntimeconfig.cache
 C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Test\obj\Debug\net9.0\ref\jwtAuthService.Test.dll
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Test\obj\Debug\net9.0\jwtAuthService.Test.sourcelink.json

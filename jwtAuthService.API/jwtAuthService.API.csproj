@@ -14,10 +14,11 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.5" />
     <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="9.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\jwtAuthService.Application\jwtAuthService.Application.csproj" />
+    <ProjectReference Include="..\jwtAuthService.Infrastructure\jwtAuthService.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

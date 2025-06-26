@@ -9,3 +9,4 @@ C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthSe
 C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Application\obj\Debug\net9.0\refint\jwtAuthService.Application.dll
 C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Application\obj\Debug\net9.0\jwtAuthService.Application.pdb
 C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Application\obj\Debug\net9.0\ref\jwtAuthService.Application.dll
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Application\obj\Debug\net9.0\jwtAuthService.Application.sourcelink.json

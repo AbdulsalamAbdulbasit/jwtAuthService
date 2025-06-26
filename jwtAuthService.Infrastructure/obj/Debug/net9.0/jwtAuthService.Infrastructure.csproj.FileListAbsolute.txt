@@ -9,3 +9,12 @@ C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthSe
 C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\obj\Debug\net9.0\refint\jwtAuthService.Infrastructure.dll
 C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\obj\Debug\net9.0\jwtAuthService.Infrastructure.pdb
 C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\obj\Debug\net9.0\ref\jwtAuthService.Infrastructure.dll
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\bin\Debug\net9.0\jwtAuthService.Infrastructure.runtimeconfig.json
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\bin\Debug\net9.0\jwtAuthService.Application.dll
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\bin\Debug\net9.0\jwtAuthService.Domain.dll
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\bin\Debug\net9.0\jwtAuthService.Application.pdb
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\bin\Debug\net9.0\jwtAuthService.Domain.pdb
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\obj\Debug\net9.0\jwtAuthService.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\obj\Debug\net9.0\jwtAuthService.Infrastructure.sourcelink.json
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\obj\Debug\net9.0\jwtAuthS.1FDF1CBC.Up2Date
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\obj\Debug\net9.0\jwtAuthService.Infrastructure.genruntimeconfig.cache
