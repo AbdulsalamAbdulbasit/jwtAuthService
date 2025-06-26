@@ -1,48 +1,11 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {
-      "jwtAuthService.Domain/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v9.0",
-        "compile": {
-          "bin/placeholder/jwtAuthService.Domain.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/jwtAuthService.Domain.dll": {}
-        }
-      },
-      "jwtAuthService.Infrastructure/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v9.0",
-        "dependencies": {
-          "jwtAuthService.Domain": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/jwtAuthService.Infrastructure.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/jwtAuthService.Infrastructure.dll": {}
-        }
-      }
-    }
+    "net9.0": {}
   },
-  "libraries": {
-    "jwtAuthService.Domain/1.0.0": {
-      "type": "project",
-      "path": "../jwtAuthService.Domain/jwtAuthService.Domain.csproj",
-      "msbuildProject": "../jwtAuthService.Domain/jwtAuthService.Domain.csproj"
-    },
-    "jwtAuthService.Infrastructure/1.0.0": {
-      "type": "project",
-      "path": "../jwtAuthService.Infrastructure/jwtAuthService.Infrastructure.csproj",
-      "msbuildProject": "../jwtAuthService.Infrastructure/jwtAuthService.Infrastructure.csproj"
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    "net9.0": [
-      "jwtAuthService.Infrastructure >= 1.0.0"
-    ]
+    "net9.0": []
   },
   "packageFolders": {
     "C:\\Users\\Abdul\\.nuget\\packages\\": {},
@@ -75,11 +38,7 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {
-            "C:\\Users\\Abdul\\OneDrive\\Desktop\\code01032025\\ExamTaskFor1791Technology\\jwtAuthService.Infrastructure\\jwtAuthService.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Abdul\\OneDrive\\Desktop\\code01032025\\ExamTaskFor1791Technology\\jwtAuthService.Infrastructure\\jwtAuthService.Infrastructure.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
