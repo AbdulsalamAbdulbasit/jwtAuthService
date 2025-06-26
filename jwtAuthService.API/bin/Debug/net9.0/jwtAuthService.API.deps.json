@@ -15,6 +15,7 @@
           "Microsoft.AspNetCore.OpenApi": "9.0.5",
           "Serilog.AspNetCore": "9.0.0",
           "Swashbuckle.AspNetCore": "9.0.1",
+          "Swashbuckle.AspNetCore.Annotations": "9.0.1",
           "jwtAuthService.Infrastructure": "1.0.0"
         },
         "runtime": {
@@ -825,6 +826,17 @@
           "Swashbuckle.AspNetCore.SwaggerUI": "9.0.1"
         }
       },
+      "Swashbuckle.AspNetCore.Annotations/9.0.1": {
+        "dependencies": {
+          "Swashbuckle.AspNetCore.SwaggerGen": "9.0.1"
+        },
+        "runtime": {
+          "lib/net9.0/Swashbuckle.AspNetCore.Annotations.dll": {
+            "assemblyVersion": "9.0.1.0",
+            "fileVersion": "9.0.1.1541"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore.Swagger/9.0.1": {
         "dependencies": {
           "Microsoft.OpenApi": "1.6.23"
@@ -1630,6 +1642,13 @@
       "sha512": "sha512-lmaz0juKGq8VgeCOki98OUVdEH7rvgBST0QrlWXNOxBl7ujNWyqdqj2SMAdgpQfTtBlSQUTHRslRM+0j7El5tA==",
       "path": "swashbuckle.aspnetcore/9.0.1",
       "hashPath": "swashbuckle.aspnetcore.9.0.1.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.Annotations/9.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TANd+yRHl99IPUWGcifwP+FbK48Lx7rrTqd21z/7GaduUdiKFF7/uUs85dC8Tdll70erb2s1eDsvItnt83Qz2A==",
+      "path": "swashbuckle.aspnetcore.annotations/9.0.1",
+      "hashPath": "swashbuckle.aspnetcore.annotations.9.0.1.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore.Swagger/9.0.1": {
       "type": "package",

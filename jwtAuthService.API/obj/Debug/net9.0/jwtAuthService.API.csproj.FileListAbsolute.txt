@@ -109,3 +109,4 @@ C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthSe
 C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.API\bin\Debug\net9.0\jwtAuthService.Application.pdb
 C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.API\bin\Debug\net9.0\jwtAuthService.Domain.pdb
 C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.API\obj\Debug\net9.0\jwtAuthService.API.sourcelink.json
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Annotations.dll
