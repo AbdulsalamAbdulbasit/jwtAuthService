@@ -1,0 +1,11 @@
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\bin\Debug\net9.0\jwtAuthService.Infrastructure.deps.json
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\bin\Debug\net9.0\jwtAuthService.Infrastructure.dll
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\bin\Debug\net9.0\jwtAuthService.Infrastructure.pdb
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\obj\Debug\net9.0\jwtAuthService.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\obj\Debug\net9.0\jwtAuthService.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\obj\Debug\net9.0\jwtAuthService.Infrastructure.AssemblyInfo.cs
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\obj\Debug\net9.0\jwtAuthService.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\obj\Debug\net9.0\jwtAuthService.Infrastructure.dll
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\obj\Debug\net9.0\refint\jwtAuthService.Infrastructure.dll
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\obj\Debug\net9.0\jwtAuthService.Infrastructure.pdb
+C:\Users\Abdul\OneDrive\Desktop\code01032025\ExamTaskFor1791Technology\jwtAuthService.Infrastructure\obj\Debug\net9.0\ref\jwtAuthService.Infrastructure.dll

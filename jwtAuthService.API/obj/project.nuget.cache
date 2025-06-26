@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "l4fryCs4/z8=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Abdul\\OneDrive\\Desktop\\code01032025\\ExamTaskFor1791Technology\\jwtAuthService.API\\jwtAuthService.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Abdul\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.5\\microsoft.aspnetcore.openapi.9.0.5.nupkg.sha512",
+    "C:\\Users\\Abdul\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
